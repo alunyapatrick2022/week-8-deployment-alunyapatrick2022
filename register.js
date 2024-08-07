@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         try{
-            const response = await fetch('http://localhost:5000/api/register', {
+            const response = await fetch('https://powerlearn-project-week-8-deployment.netlify.app/api/register', {
                 method: 'POST',
                 headers:  {
                     'Content-Type': 'application/json'
