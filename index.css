@@ -1,8 +1,10 @@
-body {
-  font-family: 'Arial', sans-serif;
-  line-height: 1.6;
-  background-color: #E8EDDF;
+@import url('https://fonts.googleapis.com/css?family=Raleway');
 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Raleway', sans-serif;
+  color: aquamarine;
 }
 
 /* Navbar Styles */

@@ -52,8 +52,8 @@ app.post('/api/register', async (req, res) => {
                if (data.length) return res.status(409).json("User already exists");
 
                //Password Hashing
-               const salt = bcrypt.genSaltSync(10)
-               const hashedPassword = bcryptjs.hashSync(req.body.password, salt)
+               const salt = bcryptjs.genSaltSync(10);
+               const hashedPassword = bcryptjs.hashSync(req.body.password, salt);
 
                const newUser = `INSERT INTO users(email, username, password) VALUES(?)`
                value = [

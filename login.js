@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 // If login is successful, redirect to the dashboard
-                window.location.href = "./dashboard.html"; // Change to your dashboard URL
+                alert('Bravo, Login request was successful!')
+                window.location.replace('./dashboard.html'); // Change to your dashboard URL
             } else {
                 // If login fails, display an error message
                 const errorData = await response.json();
@@ -30,3 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+const a = document.getElementById('dashboard');
+
+function handleDashboard() {
+    a.href = './login.html';
+}
+
+a.onclick = handleDashboard;

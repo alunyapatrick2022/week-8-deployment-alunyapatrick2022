@@ -16,9 +16,12 @@
                crossorigin="anonymous" referrerpolicy="no-referrer" />
      <link rel="stylesheet" type="text/css" href="./dashboard.css" />
 </head>
-<body>
+<body id="background">
      <section id="home">
           <nav class="navbar navbar-expand-lg fixed-top">
+               <div id="user-profile">
+                    <div></div>
+               </div>
                <div class="container-fluid">
                     <!-- <a class="navbar-brand" href="#">Expense Tracker System</a> -->
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -29,28 +32,27 @@
                          aria-labelledby="offcanvasNavbarLabel">
                          <div class="offcanvas-header">
                               <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Expense Tracker System</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                                   aria-label="Close"></button>
+                              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                          </div>
                          <div class="offcanvas-body">
                               <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                                    <li class="nav-item">
-                                        <a class="nav-link mx-lg-2" aria-current="page" href="./overview.html">View Expenses</a>
+                                        <button class="nav-link mx-lg-2" id="overview" onclick="handleViewClick()">View Expenses</button>
                                    </li>
                                    <li class="nav-item">
-                                        <a class="nav-link mx-lg-2" href="./add_expenses.html">Add Expenses</a>
+                                        <button class="nav-link mx-lg-2" id="add-expenses" onclick="handleAddExpensesClick()">Add Expenses</button>
                                    </li>
                                    <li class="nav-item">
-                                        <a class="nav-link mx-lg-2" href="./update_expenses.html">Edit Expenses</a>
+                                        <button class="nav-link mx-lg-2" id="edit-expenses" onclick="handleEditExpensesClick()">Edit Expenses</button>
                                    </li>
                                    <li class="nav-item">
-                                        <a class="nav-link mx-lg-2" href="./delete_expenses.html">Delete Expenses</a>
+                                        <button class="nav-link mx-lg-2" id="delete-expense" onclick="handleDeleteExpenseClick()">Delete Expenses</button>
                                    </li>
                                    <li class="nav-item">
-                                        <a class="nav-link mx-lg-2 " href="./budget_settings.html">Budget Settings</a>
+                                        <button class="nav-link mx-lg-2 " id="budget-settings" onclick="handleBudgetSettingsClick()">Budget Settings</button>
                                    </li>
                                    <li class="nav-item">
-                                        <button class="nav-link mx-lg-2 " id="sign-out" onclick="handleonclick()">Sign Out</button>
+                                        <button class="nav-link mx-lg-2 " id="sign-out" onclick="handleSignOutClick()">Sign Out</button>
                                    </li>
                               </ul>
                          </div>
@@ -58,5 +60,36 @@
                </div>
           </nav>
      </section>
+     <section id="side-bar">
+          <div class="side-bar">
+               <ul>
+                    <li class="nav-item">
+                         <button id="user" onclick="handleUserClick()"><i class="fa-regular fa-user"></i>My Account</button>
+                    </li>
+                    <li class="nav-item">
+                         <button id="user" onclick="handleUserClick()"><i class="fa-regular fa-user"></i>My Account</button>
+                    </li>
+                    <li class="nav-item">
+                         <button id="user" onclick="handleUserClick()"><i class="fa-regular fa-user"></i>My Account</button>
+                    </li>
+                    <li class="nav-item">
+                         <button id="user" onclick="handleUserClick()"><i class="fa-regular fa-user"></i>My Account</button>
+                    </li>
+                    <li class="nav-item">
+                         <button id="user" onclick="handleUserClick()"><i class="fa-regular fa-user"></i>My Account</button>
+                    </li>
+                    <li class="nav-item">
+                         <button id="user" onclick="handleUserClick()"><i class="fa-regular fa-user"></i>My Account</button>
+                    </li>
+                    <li class="nav-item">
+                         <button id="user" onclick="handleUserClick()"><i class="fa-regular fa-user"></i>My Account</button>
+                    </li>
+                    <li class="nav-item">
+                         <button id="user" onclick="handleUserClick()"><i class="fa-regular fa-user"></i>My Account</button>
+                    </li>
+               </ul>
+          </div>
+     </section>
+     <script src="./dashboard.js"></script>
 </body>
 </html>

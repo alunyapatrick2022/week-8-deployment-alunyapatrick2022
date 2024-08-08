@@ -7,6 +7,9 @@ body {
      color: aquamarine;
 }
 
+#home {
+     width: 80%;
+}
 /* Navbar Styles */
 .navbar {
      background-color: #242423;
@@ -74,5 +77,43 @@ body {
 }
 
 #sign-out {
-     color: #1BFFFF;
+     background: #09203F;
+          border: hsl(from color h s l);
+          border-radius: 20px;
+          box-shadow: #242423;
+          height: 40px;
+          width: 200px;
+}
+
+#side-bar {
+    background: #09203F;
+    width: 25%;
+    position: absolute;
+    top: 8.6%;
+    min-height: 91vh;
+}
+
+#user {
+     width: 120px;
+     border: none;
+     color: white;
+     background: #09203F;
+}
+
+#user-profile>div {
+     width: 50px;
+     height: 50px;
+     border-radius: 50%;
+     background: green;
+     border: 2px solid blue;
+     position: absolute;
+     top: 0;
+     cursor: pointer;
+}
+
+@media (max-width: 768px) {
+     #user-profile>div{
+          position: absolute;
+          right: 0;
+     }
 }

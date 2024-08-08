@@ -25,7 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if(!response.ok) {
                 authMsg.textContent = "User already exists!";
             } else {
-                authMsg.textContent = "User created successfully";
+                alert('Bravo, Registration request successful!');
+                window.location.replace('./login.html');
             }
 
         } catch (err) {
@@ -34,3 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
 })
+
+const a = document.getElementById('dashboard');
+
+function handleDashboard() {
+    a.href = './login.html';
+}
+
+a.onclick = handleDashboard;

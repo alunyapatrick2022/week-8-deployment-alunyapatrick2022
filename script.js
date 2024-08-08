@@ -1,5 +1,6 @@
 
 const button = document.getElementById('register');
+const a = document.getElementById('dashboard');
 
 function handleOnClick() {
     button.style.display = 'block'; // Correctly set the display property
@@ -8,3 +9,9 @@ function handleOnClick() {
 
 // Attach the event listener to the button
 button.onclick = handleOnClick;
+
+function handleDashboard() {
+    a.href = './login.html';
+}
+
+a.onclick = handleDashboard;
