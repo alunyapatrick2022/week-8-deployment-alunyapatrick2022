@@ -26,7 +26,7 @@ function handleBudgetSettingsClick() {
     window.location.replace('./budget_settings.html');
 }
 
-function handleSignOutClick() {
+function handleSignOutClick() {git 
     window.location.replace('./login.html');
 }
 

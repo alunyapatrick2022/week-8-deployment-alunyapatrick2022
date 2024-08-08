@@ -44,7 +44,7 @@ db.connect((err) => {
 })
 
 //users registration route
-app.post('/api/register', async (req, res) => {
+app.post('https://powerlearn-project-week-8-deployment.netlify.app/api/register', async (req, res) => {
      try {
           const users = `SELECT * FROM users WHERE email = ?`
           //check if user exists
@@ -75,7 +75,7 @@ app.post('/api/register', async (req, res) => {
 })
 
 //user login route
-app.post('/api/login', async (req, res) => {
+app.post('https://powerlearn-project-week-8-deployment.netlify.app/api/login', async (req, res) => {
      try {
           const users = `SELECT * FROM users WHERE email = ?`
           db.query(users, [req.body.email], (err, data) => { 
@@ -96,7 +96,7 @@ app.post('/api/login', async (req, res) => {
 
 //Password reset route
 
-app.put('/api/reset', async (req, res) => {
+app.put('https://powerlearn-project-week-8-deployment.netlify.app/api/reset', async (req, res) => {
     try {
         const users = `SELECT * FROM users WHERE email = ?`;
         db.query(users, [req.body.email], (err, data) => {
@@ -120,7 +120,7 @@ app.put('/api/reset', async (req, res) => {
 });
 
 // Dashboard route
-app.get('/api/dashboard', (req, res) => {
+app.get('https://powerlearn-project-week-8-deployment.netlify.app/api/dashboard', (req, res) => {
   if (req.isAuthenticated()) {
     res.json({ message: `Welcome to your dashboard, ${req.user.username}` });
   } else {
@@ -128,6 +128,6 @@ app.get('/api/dashboard', (req, res) => {
   }
 });
 
-app.listen(5000, () => {
-     console.log("Server is running on http://localhost:5000")
+app.listen('https://powerlearn-project-week-8-deployment.netlify.app/', () => {
+     console.log("Server is running on https://powerlearn-project-week-8-deployment.netlify.app/")
 })
