@@ -1,0 +1,17 @@
+#[build]
+ # command = "npm install && npm start"
+ # publish = "frontends"
+
+#[[redirects]]
+#  from = "/*"
+ # to = "/"
+ # status = 200
+
+[build]
+  command = "npm run build"
+  publish = "frontends"
+ 
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
