@@ -12,6 +12,8 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" text="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.4/tailwind.min.css" />
+
     <link rel="stylesheet" href="./main.css">
     <style>
         body {
@@ -62,50 +64,46 @@
             </div>
         </nav>
     </section>
-    <div id="container-login">
-        <div id="title">
-            <i class="material-icons lock">lock</i> 
-            <h1>Login</h1>
-        </div>
-
-        <form id="form">
-            <div class="input">
-                <div class="input-addon">
-                    <i class="material-icons">face</i>
+    <div class="flex items-center min-h-screen bg-gray-900">
+        <div class="container mx-auto">
+          <div class="max-w-md mx-auto my-10 bg-gray-800 p-5 rounded-md shadow-sm">
+            <div class="text-center">
+              <i class="material-icons lock">lock</i>
+              <h1 class="my-3 text-3xl font-semibold text-gray-100">Login</h1>
+            </div>
+            <div class="m-7">
+              <form id="form">
+                <div class="mb-6">
+                  <i class="material-icons">face</i>
+                  <label for="email" class="block mb-2 text-sm text-gray-400">Email Address</label>
+                  <input type="email" name="email" id="email" placeholder="johndoe@example.com" required class="w-full px-3 py-2 h-12 rounded-sm placeholder-gray-500 text-gray-900 bg-gray-100 text-sm focus:outline-none" />
                 </div>
-                <input id="email" placeholder="Email" type="text" name="email" required class="validate" autocomplete="on">
-            </div>
-
-            <div class="clearfix"></div>
-
-            <div class="input">
-                <div class="input-addon">
-                    <i class="material-icons">vpn_key</i>
+                <div class="mb-6">
+                  <i class="material-icons">vpn_key</i>
+                  <label for="password" class="block mb-2 text-sm text-gray-400">Password</label>
+                  <input type="password" name="password" id="password" placeholder="************" required class="w-full px-3 py-2 h-12 rounded-sm placeholder-gray-500 text-gray-900 bg-gray-100 text-sm focus:outline-none" />
                 </div>
-                <input id="password" placeholder="Password" type="password" name="password" required class="validate" autocomplete="on">
+                <div class="forgot-password">
+                  <a href="./password_reset.html">Forgot your password?</a>
+                </div>
+                <div class="mb-6">
+                  <button type="submit" class="w-full bg-indigo-600 inline-block text-white no-underline hover:text-indigo-100 py-4 px-4 rounded-sm focus:outline-none">Login</button>
+                </div>
+                <p class="text-base text-center text-gray-400" id="result"></p>
+              </form>
+              <div class="privacy">
+                  <a href="#">Privacy Policy</a>
+              </div>
+              <div class="register">
+                  <span style="color: #657575">Don't have an account yet?</span><br />
+                  <a href="./register.html">
+                      <button id="register-link">Register here</button>
+                  </a>
+              </div>
             </div>
-            <div class="forgot-password">
-                <a href="./password_reset.html">Forgot your password?</a>
-            </div>
-            <div class="remember-me">
-                <input type="checkbox" name="checkbox">
-                <span style="color: #757575">Remember Me</span>
-            </div>
-
-            <input type="submit" value="Log In" />
-            <p id="auth-msg"></p>
-        </form>
-        <div class="privacy">
-            <a href="#">Privacy Policy</a>
+          </div>
         </div>
-
-        <div class="register">
-            <span style="color: #657575">Don't have an account yet?</span><br />
-            <a href="./register.html">
-                <button id="register-link">Register here</button>
-            </a>
-        </div>
-    </div>
+      </div>
 
     <!-- script file -->
     <script src="./login.js"></script>

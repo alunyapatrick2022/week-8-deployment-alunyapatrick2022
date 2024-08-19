@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = document.getElementById('password').value;
 
         try {
-            const response = await fetch('http://localhost:5000/api/login', {
+            const response = await fetch('http://localhost:3000/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 // If login fails, display an error message
                 const errorData = await response.json();
-                authMsg.textContent = errorData.message || "Login failed. Please check your credentials.";
+                authMsg.textContent = errorData.message || "Login failed.Check credentials or register below.";
             }
         } catch (err) {
             authMsg.textContent = 'An error occurred. Please try again later.';
