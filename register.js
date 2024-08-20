@@ -5,29 +5,38 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        const fullNames = document.getElementById('name').value;
+        const username = document.getElementById('username').value;
         const email = document.getElementById('email').value;
-        // const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirm-password');
         const authMsg = document.getElementById('result');
+
+        // if(confirmPassword === password){
+        //     authMsg.textContent =  'Password match';
+
+        // }
+        // else {
+        //     authMsg.textContent = 'Password do not match';
+        // }
 
 
         try{
-            const response = await fetch('http://localhost:3000/api/register', {
+            const response = await fetch('http://localhost:4000/api/register', {
                 method: 'POST',
                 headers:  {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ fullNames, email, username, password })
+                body: JSON.stringify({ username, email, password })
             });
 
             const data = response.data;
 
-            if(!response.ok) {
-                authMsg.textContent = "User already exists!";
-            } else {
+            if (response.ok && (confirmPassword === password)) {
                 alert('Bravo, Registration request successful!');
                 window.location.replace('./login.html');
+            } else {
+                authMsg.textContent = "Please check if details are correctly filled!";
+
             }
 
         } catch (err) {

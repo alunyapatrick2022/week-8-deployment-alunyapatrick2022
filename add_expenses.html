@@ -43,7 +43,7 @@
                     <div class="selection-form">
                          <div class="expense-details">
                               <h2>Expenses</h2>
-                              <select name="expense_name">
+                              <select id="expense-name" name="expense_name">
                                    <option value=""></option>
                                    <option value="Housing">Housing</option>
                                    <option value="Transportation">Transportation</option>
@@ -58,14 +58,14 @@
                                    <option value="Education">Education</option>
                                    <option value="Clothing">Miscellaneous</option>
                               </select>
-                              <label>Amount</label>
-                              <input type="number" name="amount" id="number" value="amount" autocomplete="off" /><br />
-                              <label>Date</label><br />
+                              <label for="number">Amount</label>
+                              <input type="number" name="number" id="number" value="number"/><br />
+                              <label for="date">Date</label><br />
                               <input type="date" id="date" name="date" value="date" />
                          </div><br />
                          <div class="category-details">
                               <h2>Category</h2>
-                              <select name="category_name">
+                              <select id="category-name" name="category_name">
                                    <option value=""></option>
                                    <option value="rent">Rent</option>
                                    <option value="Property Taxes">Property Taxes</option>
@@ -97,18 +97,19 @@
                          </div><br />
                          <div class="payment_method">
                               <h2>Payment Method</h2>
-                              <input type="radio" name="payment_method" id="credit_card" value="credit_card" /><i class="fa-solid fa-credit-card"></i>Credit
+                              <input type="radio" name="option1" id="credit_card" value="credit_card" /><i class="fa-solid fa-credit-card"></i>Credit
                               Card
-                              <input type="radio" name="payment_method" id="bank_transfer" value="bank_transfer" /><i class="fa-solid fa-landmark"></i>Bank
+                              <input type="radio" name="option2" id="bank_transfer" value="bank_transfer" /><i class="fa-solid fa-landmark"></i>Bank
                               Transfer
-                              <input type="radio" name="payment_method" id="paypal" value="paypal" /><i class="fa-brands fa-paypal"></i>Paypal
-                              <input type="radio" name="payment_method" id="cash" value="cash" /><i class="fa-solid fa-coins"></i><i class="fa-solid fa-sack-dollar"></i>Cash
-                              <input type="radio" name="payment_method" id="crypto" value="Crypto" /><i class="fa-brands fa-bitcoin"></i>Cryptocurrency
+                              <input type="radio" name="option3" id="paypal" value="paypal" /><i class="fa-brands fa-paypal"></i>Paypal
+                              <input type="radio" name="option4" id="cash" value="cash" /><i class="fa-solid fa-coins"></i><i class="fa-solid fa-sack-dollar"></i>Cash
+                              <input type="radio" name="option5" id="crypto" value="Crypto" /><i class="fa-brands fa-bitcoin"></i>Cryptocurrency
                          </div>
                     </div><br />
-                    <input type="submit" value="Add" />
+                    <input type="submit" value="Add Expense" />
                     <input type="button" id="cancelButton" value="Cancel" />
                </form>
+               <p id="result"></p>
           </div>
      </div>
      <script src="./add_expenses.js"></script>
