@@ -15,11 +15,15 @@ const fs = require('fs');
 
 dotenv.config({ path: './.env' });
 
+// Middleware to serve static files
+app.use(express.static(path.join(__dirname, 'public')));
+
+console.log(secret);
 app.use(session({
      secret : "your_secret_key",
      resave: false,
      saveUninitialized: true,
-     cookie: { secure: false } // Set to true if using HTTPS
+     cookie: { secure: true } // Set to true if using HTTPS
    }));
 
    app.use((req, res, next) => {
@@ -43,18 +47,6 @@ const db = mysql.createConnection({
      database: process.env.DB_NAME
 });
 
-//AZURE MYSQL DATABASE CONNECTION
-// var db = mysql.createConnection({
-//      host: "api.mysql.database.azure.com",
-//      user: "alunyapatrick2022",
-//      password: "P0717820671a.",
-//      database: "api_expenses",
-     // port: 33062,
-     // ssl: {
-     //     ca: fs.readFileSync("DigiCertGlobalRootCA.crt.pem")
-     // }
-//  });
-
 //check if connection works
 db.connect((err) => {
      if (err) return console.log("Error connecting to database.");
@@ -62,10 +54,11 @@ db.connect((err) => {
      console.log("Connected to MySQL as id:", db.threadId);
 })
 
-//users registration route
-// app.get('/api/register', async (req, res)  => {
-//      res.send("Hello");
-// })
+// Route for the home page
+app.get('/', (req, res) => {
+     res.sendFile(path.join(__dirname, 'public', 'index.html'));
+ });
+
 app.post('/register', async (req, res) => {
      try {
          // Check if user exists
@@ -284,6 +277,7 @@ app.get('/download-pdf', (req, res) => {
      });
    });
 
-app.listen('3000', () => {
-     console.log("Server is running on https://expensetracker-07w3k765.b4a.run");
-})
+   const PORT = process.env.PORT || 3000;
+   app.listen(PORT, () => {
+       console.log(`Server is running on port ${PORT}`);
+   });

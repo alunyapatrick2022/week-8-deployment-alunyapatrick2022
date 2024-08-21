@@ -1,6 +1,1 @@
-.vscode
-.github
-node_modules
-.git
-api
 .env
