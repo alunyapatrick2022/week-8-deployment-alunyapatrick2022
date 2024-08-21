@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:4000/api/logout', {
+            const response = await fetch('http://localhost:3000/logout', {
                 method: 'GET',
                 credentials: 'same-origin' // You can use 'same-origin' or 'include' depending on your needs
             });

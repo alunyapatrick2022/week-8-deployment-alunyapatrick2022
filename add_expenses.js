@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         try {
-            const response = await fetch('http://localhost:4000/api/add_expenses', {
+            const response = await fetch('http://localhost:3000/add_expenses', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

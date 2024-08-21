@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
      //     }
 
         try{
-            const response = await fetch('http://localhost:5000/api/reset', {
+            const response = await fetch('http://localhost:3000/reset', {
                 method: 'POST',
                 headers:  {
                     'Content-Type': 'application/json'
