@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         try {
-            const response = await fetch('http://localhost:3000/add_expenses', {
+            const response = await fetch('https://expensetracker-07w3k765.b4a.run/add_expenses', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -285,5 +285,5 @@ app.get('/download-pdf', (req, res) => {
    });
 
 app.listen('3000', () => {
-     console.log("Server is running on http://localhost:3000");
+     console.log("Server is running on https://expensetracker-07w3k765.b4a.run/");
 })
