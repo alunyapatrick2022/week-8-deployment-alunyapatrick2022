@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         try{
-            const response = await fetch('https://expensetracker-07w3k765.b4a.run/register', {
+            const response = await fetch('http://localhost:3000/public/register', {
                 method: 'POST',
                 headers:  {
                     'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const data = response.data;
 
-            if (response.ok && (confirmPassword === password)) {
+            if (response.ok) {
                 alert('Bravo, Registration request successful!');
                 window.location.replace('./login.html');
             } else {

@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('https://expensetracker-07w3k765.b4a.run/logout', {
+            const response = await fetch('http://localhost:3000/public/logout', {
                 method: 'GET',
                 credentials: 'same-origin' // You can use 'same-origin' or 'include' depending on your needs
             });
@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             else{
                 alert('an error occured.Please give it a short');
-                console.log(secret);
             }
         } catch (error) {
             console.error('Error during logout:', error);

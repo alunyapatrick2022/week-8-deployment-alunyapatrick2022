@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = document.getElementById('password').value;
 
         try {
-            const response = await fetch('https://expensetracker-07w3k765.b4a.run/login', {
+            const response = await fetch('https://expensetracker-07w3k765.b4a.run/public/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

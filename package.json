@@ -225,7 +225,7 @@
     "yallist": "^4.0.0"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "build": "echo 'No build step required'"
   },
   "repository": {

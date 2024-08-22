@@ -9,7 +9,7 @@ const passport = require('passport');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const crypto = require('crypto');
-const secret = crypto.randomBytes(64).toString('hex');
+// const secret = crypto.randomBytes(64).toString('hex');
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
 
@@ -18,13 +18,16 @@ dotenv.config({ path: './.env' });
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-console.log(secret);
+
 app.use(session({
-     secret : "your_secret_key",
-     resave: false,
-     saveUninitialized: true,
-     cookie: { secure: true } // Set to true if using HTTPS
-   }));
+  secret: crypto.randomBytes(64).toString('hex'), // Generates a secure random secret
+  resave: false, // Don't save session if unmodified
+  saveUninitialized: false, // Don't create session until something stored
+  cookie: { 
+    secure: false, // Set to true if using HTTPS
+    maxAge: 60000 // Cookie expires after 1 minute (optional)
+  }
+}));
 
    app.use((req, res, next) => {
      res.header("Access-Control-Allow-Origin", "*");
@@ -40,31 +43,56 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
 //connection to the db
-const db = mysql.createConnection({
-     host: process.env.DB_HOST,
-     user: process.env.DB_USER,
-     password: process.env.DB_PASSWORD,
-     database: process.env.DB_NAME
-});
+function handleDisconnect() {
+  const pool = mysql.createPool({
+      connectionLimit: 10,  // Adjust the limit according to your application's needs
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME
+  });
 
-//check if connection works
-db.connect((err) => {
-     if (err) return console.log("Error connecting to database.");
+  pool.getConnection((err, connection) => {
+      if (err) {
+          if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+              console.error('Database connection lost. Reconnecting...');
+              handleDisconnect();  // Reconnect if the connection is lost
+          } else {
+              console.error('Error connecting to the database: ', err);
+              setTimeout(handleDisconnect, 10000);  // Retry after 10 seconds if there's a connection error
+          }
+      } else {
+          console.log('Connected to the database.');
+          connection.release();  // Release the connection back to the pool after successful connection
+      }
+  });
 
-     console.log("Connected to MySQL as id:", db.threadId);
-})
+  pool.on('error', (err) => {
+      console.error('Database error: ', err);
+      if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+          handleDisconnect();  // Reconnect if the connection is lost
+      } else {
+          throw err;
+      }
+  });
+
+  return pool;
+}
+
+const pool = handleDisconnect();
+ 
 
 // Route for the home page
 app.get('/', (req, res) => {
      res.sendFile(path.join(__dirname, 'public', 'index.html'));
  });
 
-app.post('/register', async (req, res) => {
+app.post('/public/register', async (req, res) => {
      try {
          // Check if user exists
          const users = `SELECT * FROM users WHERE email = ?`;
          
-         db.query(users, [req.body.email], (err, data) => {
+         pool.query(users, [req.body.email], (err, data) => {
                if (err) {
                     console.error(err);
                     return res.status(500).json("Database error");
@@ -84,7 +112,7 @@ app.post('/register', async (req, res) => {
                     hashedPassword
                     ];
  
-               db.query(newUser, values, (err, data) => {
+               pool.query(newUser, values, (err, data) => {
                     if (err) {
                          console.error(err);
                          return res.status(400).json("Something went wrong");
@@ -100,10 +128,10 @@ app.post('/register', async (req, res) => {
  });
 
 //user login route
-app.post('/login', async (req, res) => {
+app.post('/public/login', async (req, res) => {
      try {
           const users = `SELECT * FROM users WHERE email = ?`;
-          db.query(users, [req.body.email], (err, data) => { 
+          pool.query(users, [req.body.email], (err, data) => { 
                if (data.length === 0) return res.status(404).json("User not found");
 
                const isPasswordvalid = bcrypt.compareSync(req.body.password, data[0].password);
@@ -121,7 +149,7 @@ app.post('/login', async (req, res) => {
 })
 
 //Logout Route
-app.get('/logout', (req, res) => {
+app.get('/public/logout', (req, res) => {
      req.session.destroy((err) => {
        if (err) {
          return res.status(500).send('Failed to log out');
@@ -143,7 +171,7 @@ app.get('/dashboard', (req, res) => {
 app.put('/reset', async (req, res) => {
     try {
         const users = `SELECT * FROM users WHERE email = ?`;
-        db.query(users, [req.body.email], (err, data) => {
+        pool.query(users, [req.body.email], (err, data) => {
             if (data.length === 0) return res.status(404).json("User not registered an account");
 
             const salt = bcrypt.genSaltSync(10);
@@ -152,7 +180,7 @@ app.put('/reset', async (req, res) => {
             const newPasswordQuery = `UPDATE users SET password = ? WHERE email = ?`;
             const values = [hashedPassword, data[0].id];
 
-            db.query(newPasswordQuery, values, (err, result) => {
+            pool.query(newPasswordQuery, values, (err, result) => {
                 if (err) return res.status(400).json("Something went wrong");
 
                 return res.status(200).json("Password changed successfully");
@@ -168,7 +196,7 @@ app.post('/add_expenses', async (req, res) => {
      try {
          const { expense, amount, date, categoryName, paymentMethod } = req.body;
 
-         const expenses = db.query(`SELECT * FROM  expenses WHERE user_id = ? AND expense = ?`, [req.user.id, expense]);
+         const expenses = pool.query(`SELECT * FROM  expenses WHERE user_id = ? AND expense = ?`, [req.user.id, expense]);
          console.log(expenses);
          if (expenses.length > 0) {
           return res.status(400).json({ error: 'Expense already added'});
