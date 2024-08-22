@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 // If login is successful, redirect to the dashboard
                 alert('Bravo, Login request was successful!')
-                window.location.replace('./dashboard.html'); // Change to your dashboard URL
+                window.location.replace('./index2.html'); // Change to your dashboard URL
             } else {
                 // If login fails, display an error message
                 const errorData = await response.json();
