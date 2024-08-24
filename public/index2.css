@@ -90,14 +90,6 @@ body {
      margin-right: 1em;
 }
 
-#sign-out {
-     background: #09203F;
-          border: hsl(from color h s l);
-          border-radius: 20px;
-          box-shadow: #242423;
-          height: 40px;
-          width: 200px;
-}
 
 #side-bar {
      background-color: #fff;
@@ -179,10 +171,7 @@ body {
      margin: 1rem;
    }
 
-   #mini-dashboard {
-     position: absolute;
-     right: 40px;
-   }
+   
    
    .card {
      background-color: #fff;
@@ -192,8 +181,8 @@ body {
      padding: 20px;
      text-align: center;
      transition: transform 0.3s ease;
-     width: 500px;
-     height: 80vh;
+     width: 222;
+     height: auto;
    }
    
    .card:hover {
@@ -219,6 +208,52 @@ body {
      #user-profile i{
           position: absolute;
           right: 0;
+          top: 0;
+          bottom: 0;
+          width: 100px;
+          height: auto;
      }
+
+     main {
+          display: grid;
+          grid-template-columns: auto;
+          grid-template-rows: auto auto auto auto;
+          row-gap: 20px;
+          padding: 10px;
+          width: 80%;
+          margin: auto;
+        }
+
+        .navigation {
+          background-color: #fff;
+          color: #fff;
+          padding: 5px 0;
+          margin-top: 100px;
+          width: 70%;
+          text-align: center;
+          font-size: 1.1;
+          position: fixed;
+          top: 0;
+          right: 0
+
+        }
+
+        .card {
+      
+          padding: 10px;
+          text-align: center;
+          width: 70%;
+          height: auto;
+          position: relative;
+          top: 35%;
+          left: 35%;
+        }
+
+        .myChart{
+          width: 70%;
+          position: relative;
+          top: 35%;
+          left: 35%;
+        }
 }
 
