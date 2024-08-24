@@ -107,7 +107,7 @@ body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.lock {
+/* .lock {
 	position: relative;
 	top: 2px;
 }
@@ -176,7 +176,7 @@ input[type=email] {
 
 input[type=email]:focus {
     border: 1px solid #ededed;
-}
+} */
 
 .forgot-password {
     position: relative;
@@ -230,7 +230,7 @@ font-size: 1.5em;
     margin: 10px 0;
 }
 
-input[type=submit] {
+/* input[type=submit] {
     padding: 6px 25px;
     background: blue;
     color: #fff;
@@ -240,7 +240,7 @@ input[type=submit] {
     border-radius: 3px;
     width: 150px;
     height: 50px;
-}
+} */
 
 .register {
 	margin: auto;
@@ -269,6 +269,6 @@ input[type=submit] {
     border-radius: 3px;
 }
 
-#auth-msg {
+#result {
     color: red;
 }
