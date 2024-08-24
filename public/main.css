@@ -1,24 +1,24 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway');
+
 body {
     margin: 0;
     padding: 0;
     font-family: 'Raleway', sans-serif;
-    color: aquamarine;
 }
+
 
 /* Navbar Styles */
 .navbar {
-    background-color: #242423;
+    background-color: goldenrod;
     /* Dark background */
     padding: 0.5em 1em;
 }
 
 .navbar-brand {
-    color: #CFDBD5;
     /* Light color for brand */
     font-size: 1.5em;
     font-weight: bold;
     text-transform: uppercase;
+    color: whitesmoke;
 }
 
 .navbar-brand:hover {
@@ -36,7 +36,7 @@ body {
 }
 
 .offcanvas {
-    background-color: #333533;
+    /* background-color: #333533; */
     /* Darker background for offcanvas */
     color: #E8EDDF;
     /* Light color for text */
@@ -47,18 +47,26 @@ body {
     /* Light border for header */
 }
 
+.offcanvas-header button {
+    background-color: red;
+}
+
 .offcanvas-title {
     color: #F5CB5C;
     /* Accent color for title */
 }
 
+.offcanvas-body ul li a{
+    color: blue;
+}
+
 .btn-close {
     filter: invert(1);
     /* Make close button white */
+    -webkit-text-fill-color: red;
 }
 
 .nav-link {
-    color: #E8EDDF;
     /* Light color for nav links */
     font-size: 1.1em;
 }
@@ -96,23 +104,7 @@ body {
     text-align: center;
 }
 
-#title {
-    position: relative;
-    background-color: blue;
-    width: 100%;
-    padding: 20px 0px;
-    border-top-left-radius: 0.22em;
-    border-top-right-radius: 0.22em;
-    font-size: 22px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* .lock {
-	position: relative;
-	top: 2px;
-}
-
-.input {
+/* .input {
 	margin: auto;
     width: 400px;
     border-radius: 4px;
@@ -176,7 +168,7 @@ input[type=email] {
 
 input[type=email]:focus {
     border: 1px solid #ededed;
-} */
+} */ */
 
 .forgot-password {
     position: relative;
