@@ -131,17 +131,8 @@ body {
     column-gap: 60%;
   }
 
-  .container h1 {
-    font-size: 16px;
-  }
-
   .image-container img {
     width: 100%;
-    height: auto;
-  }
-
-  .image-container img {
-    width: 90%;
     height: auto;
   }
 
@@ -154,6 +145,37 @@ body {
   }
 }
 
+@media (max-width: 425px) {
+  #hero {
+    position: absolute;
+    top: 10.3%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: 30vh;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    row-gap: 2rem;
+  }
+
+  #register {
+    border-radius: 20px;
+    height: 40px;
+    width: 200px;
+    position: absolute;
+    top: 70%;
+  }
+
+  .image-container img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 18%;
+  }
+
+}
+
 @media (max-width: 320px) {
 
   .image-container img {
@@ -163,11 +185,11 @@ body {
 
   #hero {
     position: absolute;
-    top: 30.3%;
+    top: 15.3%;
     left: 0;
     right: 0;
     bottom: 0;
-    min-height: 50vh;
+    min-height: 30vh;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto auto;
@@ -180,13 +202,19 @@ body {
     top: 0;
   }
 
+  .image-container img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 10%;
+  }
+
   #register {
     border-radius: 20px;
     height: 40px;
     width: 200px;
     position: absolute;
-    top: 90%;
-    right: 0;
+    top: 50%;
   }
 
   .navbar-brand {
